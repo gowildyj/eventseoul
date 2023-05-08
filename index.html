@@ -1,14 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=, initial-scale=1.0" />
-    <title>서울시 이벤트</title>
+    <title>Event List</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h2>Information</h2>
-    <div class="here"></div>
+    <h1>Upcoming Events in Seoul, Korea</h1>
+
+    <label for="event-type">종류:</label>
+    <select id="event-type">
+      <option value="">전체</option>
+      <option value="교육/체험">교육/체험</option>
+      <option value="국악">국악</option>
+      <option value="기타">기타</option>
+      <option value="무용">무용</option>
+      <option value="뮤지컬/오페라">뮤지컬/오페라</option>
+      <option value="연극">연극</option>
+      <option value="영화">영화</option>
+      <option value="전시/미술">전시/미술</option>
+      <option value="축제-기타">축제-기타</option>
+      <option value="축제-문화/예술">축제-문화/예술</option>
+      <option value="축제-자연/경관">축제-자연/경관</option>
+      <option value="축제-전통/역사">축제-전통/역사</option>
+      <option value="콘서트">콘서트</option>
+      <option value="클래식">클래식</option>
+    </select>
+
+    <label for="event-location">지역:</label>
+    <select id="event-location">
+      <option value="">전체</option>
+      <option value="강남구">강남구</option>
+      <option value="강동구">강동구</option>
+      <option value="강북구">강북구</option>
+      <option value="강서구">강서구</option>
+      <option value="관악구">관악구</option>
+      <option value="광진구">광진구</option>
+      <option value="구로구">구로구</option>
+      <option value="금천구">금천구</option>
+      <option value="노원구">노원구</option>
+      <option value="도봉구">도봉구</option>
+      <option value="마포구">마포구</option>
+      <option value="서초구">서초구</option>
+      <option value="성동구">성동구</option>
+      <option value="성북구">성북구</option>
+      <option value="송파구">송파구</option>
+      <option value="양천구">양천구</option>
+      <option value="용산구">용산구</option>
+      <option value="은평구">은평구</option>
+      <option value="종로구">종로구</option>
+      <option value="중구">중구</option>
+      <option value="중랑구">중랑구</option>
+    </select>
+
+    <div id="event-list"></div>
 
     <script src="script.js"></script>
   </body>

@@ -1,46 +1,37 @@
-/* 스마트폰에서 한 줄에 하나의 아이템만 보이도록  */
-@media screen and (max-width: 480px) {
-  .item {
-    width: 100%;
-  }
-}
-
-/* 태블릿에서 한 줄에 두 개의 아이템이 보이도록  */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  .item {
-    width: 50%;
-  }
-}
-
-h1 {
+.title {
   font-style: italic;
   text-align: center;
   font-size: 3rem;
   margin-bottom: 50px;
   text-decoration:underline;
 }
-
-label {
+.select-area{
   font-family: sans-serif;
   font-weight: bold;
-  
+  display: flex ;
+  justify-content: flex-start;
+  border: 1px solid green;
 }
- 
-
-
-@keyframes my-animation {
-  0% { opacity: 0; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.02); }
-  100% { opacity: 1; transform: scale(1); }
+.select__box {
+  padding: 6px;
+  border-radius: 5px;
+  border: 2px solid #04385a;
+  background-color: rgb(249, 250, 255);
+  font-size: 12px;
+  color: #535252;
+  width:200px;
+  margin-bottom: 20px; 
 }
-
-
-
+/* 활성화된 상태에서의 스타일 */
+.select__box:focus {
+  border-color: #4b89ff;
+  outline: none;
+}
 .event-item {
   display: inline-block;
   width: 310px;
   height:100%;
-  margin: 17px;
+  margin: 20px 30px;
   padding: 10px;
   border: 1px solid #f7efef;
   border-radius: 5px;
@@ -67,6 +58,7 @@ label {
   height: 390px;
   object-fit:cover;
   margin-bottom: 8px;
+  
  
 }
 
@@ -75,26 +67,38 @@ label {
   font-size: 15px;
   font-family:sans-serif;
   height:36px;
-  
-  
- 
- 
-}
-select {
-  
-  padding: 6px;
-  border-radius: 5px;
-  border: 2px solid #04385a;
-  background-color: rgb(249, 250, 255);
-  font-size: 12px;
-  color: #535252;
-  width:200px;
-  margin-bottom: 20px;
- 
 }
 
-/* 활성화된 상태에서의 스타일 */
-select:focus {
-  border-color: #4b89ff;
-  outline: none;
+#event-list {
+  display: flex;
+  justify-content: center;
+  align-items:flex-end;
+  flex-wrap: wrap;
+}
+
+button{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+
+/* 스마트폰에서 한 줄에 하나의 아이템만 보이도록 */
+@media screen and (max-width: 480px) {
+  .item {
+    width: 100%;
+  }
+}
+
+/* 태블릿에서 한 줄에 두 개의 아이템이 보이도록  */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .item {
+    width: 50%;
+  }
+}
+
+@keyframes my-animation {
+  0% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
 }

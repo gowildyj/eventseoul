@@ -1,0 +1,36 @@
+.title {
+    font-style: italic;
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 50px;
+    /* text-decoration:underline; */
+}
+.select__container{
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid green; */
+}
+.select__area{
+    margin-left: 30px;
+    display: flex ;
+    justify-content: center;
+    font-size: 20px;
+}
+.select__box {
+    padding: 3px;
+    border-radius: 5px;
+    border: 2px solid #04385a;
+    background-color: rgb(249, 250, 255);
+    font-size: 12px;
+    color: #535252;
+    width:200px;
+    margin: 20px;
+    margin-bottom: 20px; 
+    margin-left: 10px;
+}
+  /* 포커스 했을 때 스타일 */
+.select__box:focus {
+    border-color: #4b89ff;
+    outline: none;
+}

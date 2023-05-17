@@ -1,6 +1,8 @@
 @import "hero.css";
 @import "header.css";
 @import "event.css";
+@import "pagination.css";
+
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
 @media screen and (max-width: 480px) {

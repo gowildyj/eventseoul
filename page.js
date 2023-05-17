@@ -76,6 +76,8 @@ fetch(apiUrl + serviceKey + "/" + endPoint)
 
       // 이벤트 리스트 초기화
       eventList.innerHTML = "";
+      pagination.innerHTML = "";
+
       // 각각의 이벤트마다 div 생성하고 event__item 클래스추가
       filteredEvents.forEach((event) => {
         const eventItem = document.createElement("div");
@@ -161,7 +163,7 @@ function scrollToTop() {
       behavior: "smooth",
     });
   } else {
-    // 화면이 hero 에 있으면 header로 스크롤
+    // 화면이 hero 에 있으면  header로 스크롤
     header.scrollIntoView({
       behavior: "smooth",
     });

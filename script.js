@@ -3,65 +3,66 @@ const serviceKey = "795367464b676f7738394459797242";
 const endPoint = "json/culturalEventInfo/1/1000/";
 const eventList = document.getElementById("event-list");
 
-// Get event type filter element
+// 이벤트 목록 필터
 const eventTypeFilter = document.getElementById("event-type");
 const eventLocationFilter = document.getElementById("event-location");
 
-// Fetch data and create event items
+// 데이터 불러오기
 fetch(apiUrl + serviceKey + "/" + endPoint)
   .then((response) => response.json())
   .then((data) => {
     const events = data.culturalEventInfo.row;
 
-    // Sort events by END_DATE in ascending order
+    // 오름차순으로 END_DATE 끝나는 날짜정렬
     events.sort((a, b) => new Date(a.END_DATE) - new Date(b.END_DATE));
 
+    //셀렉트박스 value
     const filterEvents = () => {
       const eventType = eventTypeFilter.value;
       const eventLocation = eventLocationFilter.value;
 
-      // Get today's date
+      // 오늘 날짜 구하기
       const today = new Date();
 
-      // If no filters are selected, show all events
+      // type, location 둘 다 셀렉트박스 선택되지 않으면 전체목록 보여주기
       if (!eventType && !eventLocation) {
         return events.filter((event) => {
-          // Convert END_DATE to a Date object
+          // END_DATE를 Date 객체로 생성
           const endDate = new Date(event.END_DATE);
 
-          // Filter out events with an END_DATE before today
+          // END_DATE가 오늘 날짜보다 큰 값 리턴
           return endDate >= today;
         });
       }
 
-      // If only event type filter is selected, show events with selected event type
+      // event type 이 필터링 되었을 때
       if (eventType && !eventLocation) {
         return events.filter((event) => {
-          // Convert END_DATE to a Date object
+          // END_DATE를 Date 객체로 생성
           const endDate = new Date(event.END_DATE);
 
-          // Filter out events with an END_DATE before today and with a different event type
+          // END_DATE가 오늘 날짜보다 큰 값을 가지면서 CODENAME 이 필터링한 이벤트 타입과 같은 값 리턴
           return endDate >= today && event.CODENAME === eventType;
         });
       }
 
-      // If only event location filter is selected, show events with selected event location
+      // event location 이 필터링 되었을 때
       if (!eventType && eventLocation) {
         return events.filter((event) => {
-          // Convert END_DATE to a Date object
+          // END_DATE를 Date 객체로 생성
           const endDate = new Date(event.END_DATE);
 
-          // Filter out events with an END_DATE before today and in a different location
+          // END_DATE가 오늘 날짜보다 큰 값을 가지면서 GUNAME 이 필터링한 이벤트 타입과 같은 값 리턴
           return endDate >= today && event.GUNAME === eventLocation;
         });
       }
 
-      // Otherwise, show events with selected event type and location
+      // 선택된 이벤트 값 리턴
       return events.filter((event) => {
-        // Convert END_DATE to a Date object
+        // END_DATE를 Date 객체로 생성
         const endDate = new Date(event.END_DATE);
 
-        // Filter out events with an END_DATE before today, in a different location, or with a different event type
+        // endDate가 오늘 날짜보다 미래이면서, CODENAME, GUNAME 이 선택된 이벤트 리턴
         return (
           endDate >= today &&
           event.CODENAME === eventType &&
@@ -75,7 +76,7 @@ fetch(apiUrl + serviceKey + "/" + endPoint)
 
       // 이벤트 리스트 초기화
       eventList.innerHTML = "";
-
+      // 각각의 이벤트마다 div 생성하고 event__item 클래스추가
       filteredEvents.forEach((event) => {
         const eventItem = document.createElement("div");
         eventItem.classList.add("event__item");
@@ -105,8 +106,9 @@ fetch(apiUrl + serviceKey + "/" + endPoint)
           if (property.key === "ORG_LINK") {
             const orgLink = event[property.key];
             if (orgLink.length > 20) {
-              // 일정 길이 이상인 경우
-              const shortenedLink = orgLink.substring(0, 20) + " ..."; // 일부분만 보여주도록 함
+              // 일정 길이 이상인 경우 일부분만 보여주도록 함
+              const shortenedLink = orgLink.substring(0, 20) + " ...";
+
               propertyElement.innerHTML = `<strong>${property.label}:</strong> <a href="${orgLink}" target="_blank">${shortenedLink}</a>`;
             } else {
               propertyElement.innerHTML = `<strong>${property.label}:</strong> <a href="${orgLink}" target="_blank">${orgLink}</a>`;
@@ -123,10 +125,10 @@ fetch(apiUrl + serviceKey + "/" + endPoint)
       });
     };
 
-    // Initial event list update
+    // updateEventList 함수호출
     updateEventList();
 
-    // Add event type filter change listener
+    // eventTypeFilter, eventLocationFilter 값이 변경되면 updateEventList 함수 호출
     eventTypeFilter.addEventListener("change", updateEventList);
     eventLocationFilter.addEventListener("change", updateEventList);
   })

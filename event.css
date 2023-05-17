@@ -1,8 +1,12 @@
-.event__item {
-    /* display: inline-block; */
+#event-list {
     display: flex;
     justify-content: center;
-    align-items: cen;
+    align-items:flex-end;
+    flex-wrap: wrap;
+}
+.event__item {
+    display: flex;
+    justify-content: center;
     flex-direction: column;
     width: 310px;
     height:100%;
@@ -26,13 +30,11 @@
     margin-bottom: 8px;
 }
 .event__item p {
-    margin:  10px;
+    margin: 3px;
     font-size: 15px;
-    height:30px;
 }
-#event-list {
-    display: flex;
-    justify-content: center;
-    align-items:flex-end;
-    flex-wrap: wrap;
+.event__property:nth-of-type(4) {
+    /* border: 1px solid green; */
+    height: 32px;
 }
+

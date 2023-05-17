@@ -103,6 +103,7 @@ fetch(apiUrl + serviceKey + "/" + endPoint)
 
         properties.forEach((property) => {
           const propertyElement = document.createElement("p");
+          propertyElement.classList.add("event__property");
           if (property.key === "ORG_LINK") {
             const orgLink = event[property.key];
             if (orgLink.length > 20) {
@@ -150,6 +151,19 @@ function scrollFunction() {
 }
 
 function scrollToTop() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+  const header = document.getElementById("title");
+  const heroSection = document.querySelector(".hero");
+
+  if (window.scrollY < heroSection.offsetHeight) {
+    // 화면이 hero 에 있으면 top으로 스크롤
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  } else {
+    // 화면이 hero 에 있으면  header로 스크롤
+    header.scrollIntoView({
+      behavior: "smooth",
+    });
+  }
 }

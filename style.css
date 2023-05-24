@@ -3,15 +3,13 @@
 @import "event.css";
 @import "pagination.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
 
-
-
-body{
-  font-family: 'Gowun Dodum', sans-serif;
+body {
+  font-family: "Gowun Dodum", sans-serif;
 }
 
-button{
+button {
   position: fixed;
   bottom: 20px;
   right: 20px;
